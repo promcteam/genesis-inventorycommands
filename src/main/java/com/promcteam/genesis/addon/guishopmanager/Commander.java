@@ -1,6 +1,6 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package com.promcteam.genesis.addon.guishopmanager;
 
-import org.black_ixx.bossshop.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
+import com.promcteam.genesis.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,9 +9,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Commander implements CommandExecutor {
-	private GuiShopManager plugin;
+	private final InventoryCommands plugin;
 
-	public Commander(GuiShopManager plugin) {
+	public Commander(InventoryCommands plugin) {
 		this.plugin = plugin;
 	}
 

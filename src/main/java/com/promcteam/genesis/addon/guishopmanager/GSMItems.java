@@ -1,4 +1,4 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package com.promcteam.genesis.addon.guishopmanager;
 
 import java.util.List;
 import java.util.Vector;
@@ -20,15 +20,15 @@ public class GSMItems implements Reloadable {
 	}
 
 
-	private List<GSMItem> items = new Vector<GSMItem>();
-	private GuiShopManager plugin;
+	private final List<GSMItem> items = new Vector<>();
+	private final InventoryCommands plugin;
 
-	public GSMItems(GuiShopManager plugin) {
+	public GSMItems(InventoryCommands plugin) {
 		this.plugin = plugin;
 		loadItems(plugin);
 	}
 
-	private void loadItems(GuiShopManager plugin) {
+	private void loadItems(InventoryCommands plugin) {
 		ConfigurationSection c = plugin.getConfig().getConfigurationSection("Items");
 		if (c == null) {
 			Bukkit.getLogger().severe("[GuiShopManager] No Items were found in the config :/ Delete your config and restart the server to generate a new config file.");
@@ -50,7 +50,7 @@ public class GSMItems implements Reloadable {
 		return items;
 	}
 
-	public void reload(GuiShopManager plugin) {
+	public void reload(InventoryCommands plugin) {
 		this.items.clear();
 		loadItems(plugin);
 	}

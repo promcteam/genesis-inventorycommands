@@ -1,10 +1,10 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package com.promcteam.genesis.addon.guishopmanager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.black_ixx.bossshop.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
+import com.promcteam.genesis.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
 import org.black_ixx.bossshop.events.BSRegisterTypesEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -25,7 +25,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class PlayerListener implements Listener, Reloadable {
 
-	private GuiShopManager plugin;
+	private final InventoryCommands plugin;
 	private boolean drop;
 	private boolean move;
 	private boolean place;
@@ -36,14 +36,14 @@ public class PlayerListener implements Listener, Reloadable {
 	private boolean clear_inv_on_world_change;
 	private int join_delay;
 
-	public PlayerListener(GuiShopManager plugin) {
+	public PlayerListener(InventoryCommands plugin) {
 		this.plugin = plugin;
 		loadSettings(plugin);
 	}
 	@EventHandler
 	public void onDeath(PlayerDeathEvent event) {
 		if (!this.death){
-			List<ItemStack> toRemove = new ArrayList<ItemStack>();
+			List<ItemStack> toRemove = new ArrayList<>();
 
 			for (ItemStack i : event.getDrops()){
 				if (this.plugin.getGSMItems().isShopItem(i)) {
@@ -115,9 +115,7 @@ public class PlayerListener implements Listener, Reloadable {
 	@EventHandler
 	public void onMove(InventoryClickEvent event) {
 		if (!this.move) {
-			if (event.getInventory() == null) {
-				return;
-			}
+			event.getInventory();
 			if ((this.plugin.getGSMItems().isShopItem(event.getCurrentItem())) || (this.plugin.getGSMItems().isShopItem(event.getCursor()))){
 				event.setCancelled(true);
 				event.setResult(Result.DENY);
@@ -136,11 +134,11 @@ public class PlayerListener implements Listener, Reloadable {
 		new ItemDataPartGuiShopManager().register();
 	}
 
-	public void reload(GuiShopManager plugin) {
+	public void reload(InventoryCommands plugin) {
 		loadSettings(plugin);
 	}
 
-	private void loadSettings(GuiShopManager plugin) {
+	private void loadSettings(InventoryCommands plugin) {
 		ConfigurationSection s = plugin.getConfig().getConfigurationSection("Settings");
 
 		this.drop = s.getBoolean("AllowDropItems");

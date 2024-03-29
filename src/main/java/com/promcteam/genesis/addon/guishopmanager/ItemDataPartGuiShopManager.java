@@ -1,4 +1,4 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package com.promcteam.genesis.addon.guishopmanager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ItemDataPartGuiShopManager extends ItemDataPart {
 
 	@Override
 	public ItemStack transform(ItemStack item, String used_name, String argument) {
-		ItemStack gi = GuiShopManager.gsm.getGSMItems().getItemByName(argument).getItemStack();
+		ItemStack gi = InventoryCommands.gsm.getGSMItems().getItemByName(argument).getItemStack();
 		if(gi != null){
 			return gi;
 		}
@@ -36,9 +36,9 @@ public class ItemDataPartGuiShopManager extends ItemDataPart {
 
 	@Override
 	public List<String> read(ItemStack i, List<String> output) {
-		for(GSMItem item : GuiShopManager.gsm.getGSMItems().getItems()){
+		for(GSMItem item : InventoryCommands.gsm.getGSMItems().getItems()){
 			if(item.isCorrespondingItem(i)){
-				ArrayList<String> list = new ArrayList<String>();
+				ArrayList<String> list = new ArrayList<>();
 				list.add("guishopmanager:"+item.getPath());
 				return list;
 			}

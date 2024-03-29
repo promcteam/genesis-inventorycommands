@@ -1,9 +1,9 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package com.promcteam.genesis.addon.guishopmanager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.black_ixx.bossshop.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
+import com.promcteam.genesis.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
 import org.black_ixx.bossshop.managers.ClassManager;
 import org.black_ixx.bossshop.managers.misc.InputReader;
 import org.bukkit.Bukkit;
@@ -15,17 +15,17 @@ import org.bukkit.inventory.ItemStack;
 
 public class GSMItem {
 
-	private String path;
+	private final String path;
 	private ItemStack item;
-	private String open_shop;
-	private List<String> commands;
-	private List<String> playercommands;
-	private int inventory_location;
-	private boolean give_on_join;
+	private final String open_shop;
+	private final List<String> commands;
+	private final List<String> playercommands;
+	private final int inventory_location;
+	private final boolean give_on_join;
 	private String[] worlds;
 
 
-	public GSMItem(GuiShopManager plugin, ConfigurationSection section) {
+	public GSMItem(InventoryCommands plugin, ConfigurationSection section) {
 		this.path = section.getName();
 
 		open_shop = section.getString("OpenShop");
@@ -204,7 +204,7 @@ public class GSMItem {
 	}
 
 
-	public boolean playerClicked(GuiShopManager plugin, PlayerInteractEvent e) {
+	public boolean playerClicked(InventoryCommands plugin, PlayerInteractEvent e) {
 		if (!isCorrespondingItem(e.getItem())) {
 			return false;
 		}

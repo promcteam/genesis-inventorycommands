@@ -1,22 +1,23 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package com.promcteam.genesis.addon.guishopmanager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.black_ixx.bossshop.api.BSAddonConfig;
 import org.black_ixx.bossshop.api.BossShopAddonConfigurable;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 
-public class GuiShopManager extends BossShopAddonConfigurable {
+public class InventoryCommands extends BossShopAddonConfigurable {
 
-	public static GuiShopManager gsm;
+	public static InventoryCommands gsm;
 
 	private GSMItems items;
 	private PlayerListener listener;
 
 
-	public GuiShopManager(){
+	public InventoryCommands(){
 		gsm = this;
 	}
 
@@ -49,7 +50,7 @@ public class GuiShopManager extends BossShopAddonConfigurable {
 		this.listener = new PlayerListener(this);
 		getServer().getPluginManager().registerEvents(this.listener, this);
 
-		getCommand("gsm").setExecutor(new Commander(this));
+		Objects.requireNonNull(getCommand("gsm")).setExecutor(new Commander(this));
 	}
 
 	public String getAddonName(){
@@ -66,18 +67,18 @@ public class GuiShopManager extends BossShopAddonConfigurable {
 
 
 		if (getConfig().getString("CreationVersion") == null) {
-			List<String> compass = new ArrayList<String>();
+			List<String> compass = new ArrayList<>();
 			compass.add("name:&aQuick Warp &7(Right Click) &6[x]");
 			compass.add("type:COMPASS");
 			compass.add("amount:1");
 
-			List<String> book = new ArrayList<String>();
+			List<String> book = new ArrayList<>();
 			book.add("name:&6[o] &4&lBossShop &r&6Menu &6[o]");
 			book.add("lore:&7Right Click to open the Menu!");
 			book.add("type:BOOK");
 			book.add("amount:1");
 
-			List<String> feather = new ArrayList<String>();
+			List<String> feather = new ArrayList<>();
 			feather.add("name:&e&lRight Click to &2&l&ntoggle Fly");
 			feather.add("lore:&8A command example.");
 			feather.add("type:FEATHER");
@@ -85,37 +86,37 @@ public class GuiShopManager extends BossShopAddonConfigurable {
 			feather.add("enchantment:DURABILITY#1");
 			feather.add("hideflag:all");
 
-			List<String> command_commands = new ArrayList<String>();
+			List<String> command_commands = new ArrayList<>();
 			command_commands.add("fly %player%");
 
 			c.set("Items.BossShopMenu.Look", book);
-			c.set("Items.BossShopMenu.GiveOnJoin", Boolean.valueOf(true));
-			c.set("Items.BossShopMenu.InventoryLocation", Integer.valueOf(1));
+			c.set("Items.BossShopMenu.GiveOnJoin", Boolean.TRUE);
+			c.set("Items.BossShopMenu.InventoryLocation", 1);
 			c.set("Items.BossShopMenu.OpenShop", "menu");
 
 			c.set("Items.Servers.Look", compass);
-			c.set("Items.Servers.GiveOnJoin", Boolean.valueOf(true));
-			c.set("Items.Servers.InventoryLocation", Integer.valueOf(9));
+			c.set("Items.Servers.GiveOnJoin", Boolean.TRUE);
+			c.set("Items.Servers.InventoryLocation", 9);
 			c.set("Items.Servers.OpenShop", "bungeecordservers");
 			c.set("Items.Servers.World", "spawn:hub:world1");
 
 			c.set("Items.Command.Look", feather);
-			c.set("Items.Command.GiveOnJoin", Boolean.valueOf(true));
-			c.set("Items.Command.InventoryLocation", Integer.valueOf(5));
+			c.set("Items.Command.GiveOnJoin", Boolean.TRUE);
+			c.set("Items.Command.InventoryLocation", 5);
 			c.set("Items.Command.Command", command_commands);
 		}
 
 
 		ac.addDefault("CreationVersion", getDescription().getVersion());
 		ac.addDefault("Settings.JoinDelay", -1);
-		ac.addDefault("Settings.AllowPlaceItems", Boolean.valueOf(false));
-		ac.addDefault("Settings.AllowMoveItems", Boolean.valueOf(false));
-		ac.addDefault("Settings.AllowDropItems", Boolean.valueOf(false));
-		ac.addDefault("Settings.AcceptLeftClick", Boolean.valueOf(false));
-		ac.addDefault("Settings.DropItemsOnDeath", Boolean.valueOf(false));
-		ac.addDefault("Settings.GetItemsOnRespawn", Boolean.valueOf(true));
-		ac.addDefault("Settings.ClearInvOnJoin", Boolean.valueOf(false));
-		ac.addDefault("Settings.ClearInvOnWorldChange", Boolean.valueOf(false));
+		ac.addDefault("Settings.AllowPlaceItems", Boolean.FALSE);
+		ac.addDefault("Settings.AllowMoveItems", Boolean.FALSE);
+		ac.addDefault("Settings.AllowDropItems", Boolean.FALSE);
+		ac.addDefault("Settings.AcceptLeftClick", Boolean.FALSE);
+		ac.addDefault("Settings.DropItemsOnDeath", Boolean.FALSE);
+		ac.addDefault("Settings.GetItemsOnRespawn", Boolean.TRUE);
+		ac.addDefault("Settings.ClearInvOnJoin", Boolean.FALSE);
+		ac.addDefault("Settings.ClearInvOnWorldChange", Boolean.FALSE);
 		getAddonConfig().save();
 	}
 
