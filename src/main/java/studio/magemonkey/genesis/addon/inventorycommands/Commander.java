@@ -1,6 +1,5 @@
-package com.promcteam.genesis.addon.guishopmanager;
+package studio.magemonkey.genesis.addon.inventorycommands;
 
-import com.promcteam.genesis.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -75,7 +74,7 @@ public class Commander implements CommandExecutor {
 					return false;
 				}
 
-				item.giveItem(player, GSMGiveItemsReason.COMMAND);
+				item.giveItem(player, GSMItems.GSMGiveItemsReason.COMMAND);
 				sender.sendMessage(ChatColor.YELLOW + "Added GSM Item " + ChatColor.RED + itemname + ChatColor.YELLOW + " to " + ChatColor.RED + playername + "'s" + ChatColor.YELLOW + " Inventory.");
 
 				return true;

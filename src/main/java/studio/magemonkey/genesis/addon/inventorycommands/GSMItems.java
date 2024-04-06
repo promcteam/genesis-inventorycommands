@@ -1,4 +1,4 @@
-package com.promcteam.genesis.addon.guishopmanager;
+package studio.magemonkey.genesis.addon.inventorycommands;
 
 import java.util.List;
 import java.util.Vector;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class GSMItems implements Reloadable {
 
-	enum GSMGiveItemsReason {
+	public enum GSMGiveItemsReason {
 		RESPAWN,
 		SERVER_JOIN,
 		WORLD_CHANGED,
