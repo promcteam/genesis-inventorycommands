@@ -17,22 +17,22 @@ public class GSMItem {
     @Getter
     private final String       path;
     private       ItemStack    item;
-    private final String       open_shop;
+    private final String       openShop;
     private final List<String> commands;
-    private final List<String> playercommands;
-    private final int          inventory_location;
-    private final boolean      give_on_join;
+    private final List<String> playerCommands;
+    private final int          inventoryLocation;
+    private final boolean      giveOnJoin;
     private       String[]     worlds;
 
 
     public GSMItem(InventoryCommands plugin, ConfigurationSection section) {
         this.path = section.getName();
 
-        open_shop = section.getString("OpenShop");
+        openShop = section.getString("OpenShop");
         commands = InputReader.readStringList(section.get("Command"));
-        playercommands = InputReader.readStringList(section.get("PlayerCommand"));
-        inventory_location = InputReader.getInt(section.get("InventoryLocation"), 1) - 1;
-        give_on_join = InputReader.getBoolean(section.getString("GiveOnJoin"), true);
+        playerCommands = InputReader.readStringList(section.get("PlayerCommand"));
+        inventoryLocation = InputReader.getInt(section.get("InventoryLocation"), 1) - 1;
+        giveOnJoin = InputReader.getBoolean(section.getString("GiveOnJoin"), true);
 
         List<String> list = InputReader.readStringList(section.get("Look"));
         if (list != null) {
@@ -96,7 +96,7 @@ public class GSMItem {
         }
 
 
-        if (give_on_join) {
+        if (giveOnJoin) {
             if ((p.getInventory().contains(item.getType())) && (hasItem(p))) { //Player already has item
                 return;
             }
@@ -111,39 +111,39 @@ public class GSMItem {
 
     @Deprecated
     public void giveItem(Player p) {
-        boolean bad_location = false;
+        boolean badLocation = false;
 
-        int loc = inventory_location;
+        int loc = inventoryLocation;
 
         if ((loc >= p.getInventory().getSize()) || (loc < 0)) {
             loc = 0;
-            bad_location = true;
+            badLocation = true;
         }
 
-        ItemStack real_item = ClassManager.manager.getItemStackTranslator()
+        ItemStack realItem = ClassManager.manager.getItemStackTranslator()
                 .translateItemStack(null, null, null, item.clone(), p, true);
 
-        if ((!bad_location) || (p.getInventory().getItem(loc) == null)) {
-            p.getInventory().setItem(loc, real_item);
+        if ((!badLocation) || (p.getInventory().getItem(loc) == null)) {
+            p.getInventory().setItem(loc, realItem);
         } else {
-            p.getInventory().addItem(real_item);
+            p.getInventory().addItem(realItem);
         }
     }
 
     public void removeItem(Player p) {
-        List<ItemStack> to_remove = null;
+        List<ItemStack> toRemove = null;
         for (ItemStack s : p.getInventory().getContents()) {
             if (s != null) {
                 if (isSameItem(s, p)) {
-                    if (to_remove == null) {
-                        to_remove = new ArrayList<ItemStack>();
+                    if (toRemove == null) {
+                        toRemove = new ArrayList<ItemStack>();
                     }
-                    to_remove.add(s);
+                    toRemove.add(s);
                 }
             }
         }
 
-        for (ItemStack remove : to_remove) {
+        for (ItemStack remove : toRemove) {
             p.getInventory().remove(remove);
         }
     }
@@ -195,8 +195,8 @@ public class GSMItem {
             return false;
         }
 
-        if (open_shop != null) {
-            plugin.getGenesis().getAPI().openShop(e.getPlayer(), open_shop);
+        if (openShop != null) {
+            plugin.getGenesis().getAPI().openShop(e.getPlayer(), openShop);
         }
 
         if (commands != null) {
@@ -206,8 +206,8 @@ public class GSMItem {
             }
         }
 
-        if (playercommands != null) {
-            for (String command : playercommands) {
+        if (playerCommands != null) {
+            for (String command : playerCommands) {
                 e.getPlayer().performCommand(ClassManager.manager.getStringManager().transform(command, e.getPlayer()));
             }
         }
