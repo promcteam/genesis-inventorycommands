@@ -73,7 +73,7 @@ public class InventoryCommands extends GenesisAddonConfigurable {
             compass.add("amount:1");
 
             List<String> book = new ArrayList<>();
-            book.add("name:&6[o] &4&lBossShop &r&6Menu &6[o]");
+            book.add("name:&6[o] &4&lGenesis &r&6Menu &6[o]");
             book.add("lore:&7Right Click to open the Menu!");
             book.add("type:BOOK");
             book.add("amount:1");
@@ -89,10 +89,10 @@ public class InventoryCommands extends GenesisAddonConfigurable {
             List<String> command_commands = new ArrayList<>();
             command_commands.add("fly %player%");
 
-            c.set("Items.BossShopMenu.Look", book);
-            c.set("Items.BossShopMenu.GiveOnJoin", Boolean.TRUE);
-            c.set("Items.BossShopMenu.InventoryLocation", 1);
-            c.set("Items.BossShopMenu.OpenShop", "menu");
+            c.set("Items.GenesisMenu.Look", book);
+            c.set("Items.GenesisMenu.GiveOnJoin", Boolean.TRUE);
+            c.set("Items.GenesisMenu.InventoryLocation", 1);
+            c.set("Items.GenesisMenu.OpenShop", "menu");
 
             c.set("Items.Servers.Look", compass);
             c.set("Items.Servers.GiveOnJoin", Boolean.TRUE);

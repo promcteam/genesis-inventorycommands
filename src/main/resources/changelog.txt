@@ -7,19 +7,19 @@ v1.1.1
 *[FIX] Small bugfix
 
 
-v1.1.0 (Requires BossShopPro v1.6.8 or higher)
-*[UPDATE] Updated to BossShopPro v1.6.8
+v1.1.0 (Requires Genesis v1.6.8 or higher)
+*[UPDATE] Updated to Genesis v1.6.8
 
 v1.0.9
 *[IMPROVE] Now able to detect GuiShopManager items with a stacksize different from the one defined in the config
 
 
-v1.0.8 (Requires BossShopPro v1.4.2 or higher)
-*[UPDATE] Updated to BossShopPro v1.4.2
+v1.0.8 (Requires Genesis v1.4.2 or higher)
+*[UPDATE] Updated to Genesis v1.4.2
 
 
-v1.0.7 (Requires BossShopPro v1.3.9 or higher)
-*[UPDATE] Updated to BossShopPro v1.3.9
+v1.0.7 (Requires Genesis v1.3.9 or higher)
+*[UPDATE] Updated to Genesis v1.3.9
 
 
 v1.0.6
@@ -37,8 +37,8 @@ v1.0.4
 *[FIX] It was not possible to remove the default items
 
 
-v1.0.3 (Needs BossShopPro v1.0.7 or higher)
-*[UPDATE] Updated to BossShopPro v1.0.7
+v1.0.3 (Needs Genesis v1.0.7 or higher)
+*[UPDATE] Updated to Genesis v1.0.7
 
 
 v1.0.2
