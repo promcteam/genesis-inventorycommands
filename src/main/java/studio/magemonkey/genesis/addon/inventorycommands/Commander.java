@@ -1,6 +1,5 @@
-package org.black_ixx.bossshop.addon.guishopmanager;
+package studio.magemonkey.genesis.addon.inventorycommands;
 
-import org.black_ixx.bossshop.addon.guishopmanager.GSMItems.GSMGiveItemsReason;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,9 +8,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Commander implements CommandExecutor {
-	private GuiShopManager plugin;
+	private final InventoryCommands plugin;
 
-	public Commander(GuiShopManager plugin) {
+	public Commander(InventoryCommands plugin) {
 		this.plugin = plugin;
 	}
 
@@ -75,7 +74,7 @@ public class Commander implements CommandExecutor {
 					return false;
 				}
 
-				item.giveItem(player, GSMGiveItemsReason.COMMAND);
+				item.giveItem(player, GSMItems.GSMGiveItemsReason.COMMAND);
 				sender.sendMessage(ChatColor.YELLOW + "Added GSM Item " + ChatColor.RED + itemname + ChatColor.YELLOW + " to " + ChatColor.RED + playername + "'s" + ChatColor.YELLOW + " Inventory.");
 
 				return true;
