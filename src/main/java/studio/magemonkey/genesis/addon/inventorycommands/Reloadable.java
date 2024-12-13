@@ -1,5 +1,5 @@
 package studio.magemonkey.genesis.addon.inventorycommands;
 
 public interface Reloadable {
-   void reload(InventoryCommands paramGuiShopManager);
+    void reload(InventoryCommands paramGuiShopManager);
 }
